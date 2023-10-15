@@ -15,7 +15,7 @@ public class DistancesBenchmark
     public (string, string) BothSentences { get; set; }
     public (string, string)[] Sentences { get; set; }
     
-    private const int N = 500;
+    private const int N = 20;
     
     public DistancesBenchmark()
     {
