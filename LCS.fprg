@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="jswis"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-15 12:59:37 PM"/>
+        <attribute name="created" value="anN3aXM7QlVCVS1MQVBUT1A7MjAyMy0xMC0xNTsxMjozNjo0NSBQTTsyNjUw"/>
+        <attribute name="edited" value="anN3aXM7QlVCVS1MQVBUT1A7MjAyMy0xMC0xNTsxMjo1OTozNyBQTTszOzI3NjY="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <input variable="world1"/>
+            <input variable="world2"/>
+            <assign variable="m" expression="word1.Length"/>
+            <assign variable="n" expression="word2.Length"/>
+            <assign variable="d[,]" expression="d[0&#8230;m,0&#8230;n]"/>
+            <assign variable="i" expression="0"/>
+            <for variable="i" start="0" end="m" direction="inc" step="1">
+                <assign variable="d[i,0]" expression="0"/>
+            </for>
+            <for variable="i" start="0" end="n" direction="inc" step="1">
+                <assign variable="d[0,i]" expression="0"/>
+            </for>
+            <for variable="i" start="0" end="m" direction="inc" step="1">
+                <for variable="j" start="0" end="n" direction="inc" step="1">
+                    <if expression="world1[i] == world2[j]">
+                        <then>
+                            <assign variable="d[i,j]" expression="d[i-1,j-1]+1"/>
+                        </then>
+                        <else>
+                            <if expression="d[i,j-1] &gt; d[i-1,j]">
+                                <then>
+                                    <assign variable="d[i,j]" expression="d[i,j-1]"/>
+                                </then>
+                                <else>
+                                    <assign variable="d[i,j]" expression="d[i-1,j]"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </for>
+            </for>
+            <output expression="d[m,n]" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

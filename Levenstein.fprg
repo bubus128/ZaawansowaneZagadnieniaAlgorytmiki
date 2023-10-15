@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="jswis"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-15 12:54:48 PM"/>
+        <attribute name="created" value="anN3aXM7QlVCVS1MQVBUT1A7MjAyMy0xMC0xNTsxMjozNjo0NSBQTTsyNjUw"/>
+        <attribute name="edited" value="anN3aXM7QlVCVS1MQVBUT1A7MjAyMy0xMC0xNTsxMjo1NDo0OCBQTTsxOzI3NjE="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <input variable="world1"/>
+            <input variable="world2"/>
+            <assign variable="m" expression="word1.Length"/>
+            <assign variable="n" expression="word2.Length"/>
+            <assign variable="d[,]" expression="d[0&#8230;m,0&#8230;n]"/>
+            <assign variable="i" expression="0"/>
+            <for variable="i" start="0" end="m" direction="inc" step="1">
+                <assign variable="d[i,0]" expression="i"/>
+            </for>
+            <for variable="i" start="0" end="n" direction="inc" step="1">
+                <assign variable="d[0,i]" expression="i"/>
+            </for>
+            <for variable="i" start="0" end="m" direction="inc" step="1">
+                <for variable="j" start="0" end="n" direction="inc" step="1">
+                    <if expression="world1[i] == world2[j]">
+                        <then>
+                            <assign variable="cost" expression="1"/>
+                        </then>
+                        <else>
+                            <assign variable="cost" expression="0"/>
+                        </else>
+                    </if>
+                    <if expression="d[i-1,j +1 &lt;= d[i, j-1]+1&#13;&#10;&amp;&amp;&#13;&#10;d[i-1,j +1 &lt;= d[-1i, j-1]+cost">
+                        <then>
+                            <assign variable="d[i,j]" expression="d[i-1,j +1"/>
+                        </then>
+                        <else>
+                            <if expression="d[i, j-1]+1 &lt;= d[i-1,j +1&#13;&#10;&amp;&amp;&#13;&#10;d[i, j-1]+1 &lt;= d[-1i, j-1]+cost">
+                                <then>
+                                    <assign variable="d[i,j]" expression="d[i, j-1]+1"/>
+                                </then>
+                                <else>
+                                    <assign variable="d[i,j]" expression="d[i-1,j-1]+cost"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </for>
+            </for>
+            <output expression="d[m,n]" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
