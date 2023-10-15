@@ -8,25 +8,12 @@ public class DistancesBenchmark
 {
     [ParamsSource((nameof(Words)))] 
     public (string, string) BothWords { get; set; }
-    public (string, string)[] Words { get; set; }
+    public static (string, string)[] Words => new[] { ("OUTLIER", "OUTLAW") };
     
     [ParamsSource((nameof(Sentences)))]
     public (string, string) BothSentences { get; set; }
-    public (string, string)[] Sentences { get; set; }
+    public static (string, string)[] Sentences => new[] { ("WIDOCZNOSC NA DRODZE DOBRA", "WIDOCZNOSC DOBRA") };
     
-    private const int N = 20;
-    
-    public DistancesBenchmark()
-    {
-        Words = new (string, string)[N];
-        Sentences = new (string, string)[N];
-
-        var faker = new Faker();
-
-        Sentences = Enumerable.Range(0, N).Select(x => (faker.Lorem.Sentence(), faker.Lorem.Sentence())).ToArray();
-        Words = Enumerable.Range(0, N).Select(x => (faker.Random.Word(), faker.Random.Word())).ToArray();
-    }
-
     [Benchmark]
     public int LevensteinWords() => Functions.Levenstein(BothWords.Item1, BothWords.Item2);
     
