@@ -4,7 +4,6 @@ using BenchmarkDotNet.Running;
 using Bogus;
 using Distances;
 
-[MemoryDiagnoser]
 public class DistancesBenchmark
 {
     [ParamsSource((nameof(Words)))] 
