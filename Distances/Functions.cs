@@ -19,12 +19,20 @@ public static class Functions
         Enumerable.Range(0, colsCount).ToList().ForEach(i => d[0, i] = i);
         Enumerable.Range(0, rowsCount).ToList().ForEach(i => d[i, 0] = i);
 
+        // Calculate the distance
         for (var i = 1; i < rowsCount; ++i)
         {
             for (var j = 1; j < colsCount; ++j)
             {
+                // Check if any operation is needed
                 var cost = input1[i - 1] == input2[j - 1] ? 0 : 1;
-                d[i, j] = new int[] { d[i - 1, j] + 1, d[i, j - 1] + 1, d[i - 1, j - 1] + cost }.Min();
+                // Get the lowest cost of operation
+                d[i, j] = new int[]
+                {
+                    d[i - 1, j] + 1, // deletion
+                    d[i, j - 1] + 1, // insertion
+                    d[i - 1, j - 1] + cost // substitution
+                }.Min();
             }
         }
 
@@ -49,9 +57,13 @@ public static class Functions
         {
             for (var j = 1; j < colsCount; ++j)
             {
-                d[i,j] = input1[i - 1] == input2[j - 1] ? d[i-1,j-1]+1 : Math.Max(d[i,j-1],d[i-1,j]);
+                // Check if characters are the same
+                d[i, j] = input1[i - 1] == input2[j - 1]
+                    ? d[i - 1, j - 1] + 1 // If yes increment the length
+                    : Math.Max(d[i, j - 1], d[i - 1, j]); // If no get the longer sequence.
             }
-        } 
-        return d[rowsCount-1, colsCount-1];
+        }
+
+        return d[rowsCount - 1, colsCount - 1];
     }
 }
