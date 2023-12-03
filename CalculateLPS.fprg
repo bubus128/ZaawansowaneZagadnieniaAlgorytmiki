@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="jswis"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-12-01 06:07:40 PM"/>
+        <attribute name="created" value="anN3aXM7QlVCVS1MQVBUT1A7MjAyMy0xMS0xMDswMzoyMzo0MCBQTTsyNjM3"/>
+        <attribute name="edited" value="anN3aXM7QlVCVS1MQVBUT1A7MjAyMy0xMi0wMTswNjowNzo0MCBQTTs1OzI3NTU="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <input variable="pattern"/>
+            <assign variable="len" expression="0"/>
+            <assign variable="i" expression="0"/>
+            <while expression="i&lt;pattern.Length">
+                <if expression="pattern[i] == pattern[len]">
+                    <then>
+                        <call expression="len++"/>
+                        <assign variable="lps[i]" expression="len"/>
+                        <call expression="i++"/>
+                    </then>
+                    <else>
+                        <if expression="len!=0">
+                            <then>
+                                <assign variable="len" expression="lps[len-1]"/>
+                            </then>
+                            <else>
+                                <assign variable="lps[i]" expression="0"/>
+                                <call expression="i++"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </while>
+            <output expression="lps" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

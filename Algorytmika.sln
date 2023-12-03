@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Distances", "Distances\Distances.csproj", "{382E9AF4-72A2-4B03-BD9D-4A31CA5DEA94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distances", "Distances\Distances.csproj", "{382E9AF4-72A2-4B03-BD9D-4A31CA5DEA94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Distances.Benchmarks", "Distances.Benchmarks\Distances.Benchmarks.csproj", "{337E8BA6-6BC2-4570-9403-F7B100804809}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distances.Benchmarks", "Distances.Benchmarks\Distances.Benchmarks.csproj", "{337E8BA6-6BC2-4570-9403-F7B100804809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Substrings", "Substrings\Substrings.csproj", "{24265D9C-6878-409D-8BC3-3D24ED17C14D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{337E8BA6-6BC2-4570-9403-F7B100804809}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{337E8BA6-6BC2-4570-9403-F7B100804809}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{337E8BA6-6BC2-4570-9403-F7B100804809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24265D9C-6878-409D-8BC3-3D24ED17C14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24265D9C-6878-409D-8BC3-3D24ED17C14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24265D9C-6878-409D-8BC3-3D24ED17C14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24265D9C-6878-409D-8BC3-3D24ED17C14D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
