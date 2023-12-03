@@ -22,10 +22,19 @@
             var text = GetInputUntilValid("Text");
             var substring = GetInputUntilValid("Substring");
 
+            Console.WriteLine($"\nLooking for {substring} in {text} using Boyer Moore algorithm");
+
             // Find the substring using Boyer Moore algorithm
             int boyerMooreIndex = Functions.BoyerMoore(text, substring);
             Console.WriteLine(boyerMooreIndex > -1 ?
                 $"Substring found at index: {boyerMooreIndex}" :
+                "Substring not found");
+
+            Console.WriteLine($"\nLooking for {substring} in {text} using Kunth Morris Pratt algorithm");
+
+            int knuthMorrisPrattIndex = Functions.KunthMorrisPratt(text, substring);
+            Console.WriteLine(knuthMorrisPrattIndex > -1 ?
+                $"Substring found at index: {knuthMorrisPrattIndex}" :
                 "Substring not found");
         }
     }
