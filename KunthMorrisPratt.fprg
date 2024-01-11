@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="jswis"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-12-01 06:18:25 PM"/>
+        <attribute name="created" value="anN3aXM7QlVCVS1MQVBUT1A7MjAyMy0xMS0xMDswMzoyMzo0MCBQTTsyNjM3"/>
+        <attribute name="edited" value="anN3aXM7QlVCVS1MQVBUT1A7MjAyMy0xMi0wMTswNjoxODoyNSBQTTs0OzI3NTk="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <input variable="text"/>
+            <input variable="pattern"/>
+            <call expression="lps = CalculateLPS(pattern)"/>
+            <assign variable="textIndex" expression="0"/>
+            <assign variable="patternIndex" expression="0"/>
+            <while expression="textIndex&lt;text.Length">
+                <if expression="pattern[patternIndex] == text[textIndex]">
+                    <then>
+                        <call expression="patternIndex++"/>
+                        <call expression="textIndex++"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="patternIndex == pattern.Langth">
+                    <then>
+                        <output expression="textIndex - PatternIndex" newline="True"/>
+                    </then>
+                    <else>
+                        <if expression="textIndex &lt; text.Length &amp;&amp; pattern[patternIndex] != text[textIndex]">
+                            <then>
+                                <if expression="patternIndex != 0">
+                                    <then>
+                                        <assign variable="patternIndex" expression="lps[patternIndex -1]"/>
+                                    </then>
+                                    <else>
+                                        <call expression="textIndex++"/>
+                                    </else>
+                                </if>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </while>
+            <output expression="-1" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

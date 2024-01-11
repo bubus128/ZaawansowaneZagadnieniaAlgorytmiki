@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="jswis"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-12 01:37:34 PM"/>
+        <attribute name="created" value="anN3aXM7QlVCVS1MQVBUT1A7MjAyMy0xMS0xMDswMzoyMzo0MCBQTTsyNjM3"/>
+        <attribute name="edited" value="anN3aXM7QlVCVS1MQVBUT1A7MjAyMy0xMS0xMjswMTozNzozNCBQTTsxOzI3NTM="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <input variable="text"/>
+            <input variable="pattern"/>
+            <for variable="i" start="0" end="text.Length" direction="inc" step="pattern.Length">
+                <if expression="text[i] in pattern">
+                    <then>
+                        <assign variable="indexes[]" expression="pattern.Indexes(text[i])"/>
+                        <for variable="j" start="0" end="indexes.Length" direction="inc" step="1">
+                            <if expression="indexes[j]&lt;=i &amp;&amp; i+ pattern.length - indexes[j] &lt;= text.length">
+                                <then>
+                                    <if expression="text.substring(i-indexes[j], pattern.length) == pattern">
+                                        <then>
+                                            <output expression="i-indexes[j]" newline="True"/>
+                                        </then>
+                                        <else/>
+                                    </if>
+                                </then>
+                                <else/>
+                            </if>
+                        </for>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+</flowgorithm>
