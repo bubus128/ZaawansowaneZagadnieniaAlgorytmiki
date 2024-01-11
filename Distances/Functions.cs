@@ -8,7 +8,7 @@ public static class Functions
     /// <param name="input1">First string to compare.</param>
     /// <param name="input2">Second string to compare.</param>
     /// <returns>The Levenstein distance between given strings.</returns>
-    public static int Levenstein(string input1, string input2)
+    public static int Levenstein(string input1, string input2, Action<string>? lineWriter = null, Action? styleRow = null, Action? resetStyleRow = null)
     {
         // Create an array
         var rowsCount = input1.Length + 1;
@@ -33,6 +33,11 @@ public static class Functions
                     d[i, j - 1] + 1, // insertion
                     d[i - 1, j - 1] + cost // substitution
                 }.Min();
+            }
+
+            if (lineWriter != null)
+            {
+                TableWriter.Print(d, lineWriter, currentRow: i, styleRow: styleRow, resetStyleRow: resetStyleRow);
             }
         }
 

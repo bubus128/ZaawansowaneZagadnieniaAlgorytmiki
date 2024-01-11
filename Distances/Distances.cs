@@ -23,7 +23,7 @@ public static class Distances
         var input2 = GetInputUntilValid("Input2");
 
         // Get the Levenstein distance
-        Console.WriteLine($"{nameof(Functions.Levenstein)}: {Functions.Levenstein(input1, input2)}");
+        Console.WriteLine($"{nameof(Functions.Levenstein)}: {Functions.Levenstein(input1, input2, Console.WriteLine, () => Console.BackgroundColor = ConsoleColor.DarkBlue, Console.ResetColor )}");
 
         // Get the longest common subsequence length
         Console.WriteLine($"{nameof(Functions.LCS)}: {Functions.LCS(input1, input2)}");
