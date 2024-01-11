@@ -25,6 +25,18 @@ public class DistancesBenchmark
     
     [Benchmark]
     public int LCSSentences() => Functions.LCS(BothSentences.Item1, BothSentences.Item2);
+    
+    [Benchmark]
+    public int BoyerMooreWords() => Substrings.Functions.BoyerMoore(BothWords.Item1, BothWords.Item2);
+    
+    [Benchmark]
+    public int BoyerMooreSentences() => Substrings.Functions.BoyerMoore(BothSentences.Item1, BothSentences.Item2);
+    
+    [Benchmark]
+    public int KunthMorrisPrattWords() => Substrings.Functions.KunthMorrisPratt(BothWords.Item1, BothWords.Item2);
+    
+    [Benchmark]
+    public int KunthMorrisPrattSentences() => Substrings.Functions.KunthMorrisPratt(BothSentences.Item1, BothSentences.Item2);
 }
 
 public static class Program
