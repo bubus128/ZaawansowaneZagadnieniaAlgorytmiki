@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Distances\Distances.csproj" />
+      <ProjectReference Include="..\Substrings\Substrings.csproj" />
     </ItemGroup>
 
     <ItemGroup>
