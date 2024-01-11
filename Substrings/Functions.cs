@@ -14,7 +14,7 @@ namespace Substrings
         /// <param name="text">Text in which the pattern will be searched.</param>
         /// <param name="pattern">Substring to find.</param>
         /// <returns>Index of the beginning of the first substring if found; otherwise, -1</returns>
-        public static int BoyerMoore(string text, string pattern)
+        public static int BoyerMoore(string text, string pattern, bool print = true)
         {
             // Create an array with pattern chars
             char[] chars = pattern.ToCharArray();
@@ -22,12 +22,18 @@ namespace Substrings
             // Iterate through the string, jumping by the lenght of serarched pattern
             for (int i = 0; i < text.Length; i += pattern.Length)
             {
-                Console.WriteLine($"Checking position {i}:");
+                if (print)
+                {
+                    Console.WriteLine($"Checking position {i}:");
+                }
 
                 // Continue if the letter is not preset in pattern
                 if (!chars.Contains(text[i]))
                 {
-                    Console.WriteLine($"Character '{text[i]}' is not present in the pattern. Skipping.");
+                    if (print)
+                    {
+                        Console.WriteLine($"Character '{text[i]}' is not present in the pattern. Skipping.");
+                    }
                     continue;
                 }
                 // If letter is preset in the pattern, then:
@@ -36,7 +42,10 @@ namespace Substrings
                 int indexOfPattern = chars.Select((letter, index) => new { letter, index })
                     .Where(item => item.letter == text[i] && item.index <= i && i + pattern.Length - item.index <= text.Length).ToList()
                     .FirstOrDefault(item => text.Substring(i - item.index, pattern.Length) == pattern)?.index ?? -1;
-                Console.WriteLine($"Substring comparison at position {i - indexOfPattern}: '{text.Substring(i - indexOfPattern, pattern.Length)}'");
+                if (print)
+                {
+                    Console.WriteLine($"Substring comparison at position {i - indexOfPattern}: '{text.Substring(i - indexOfPattern, pattern.Length)}'");
+                }
                 if (indexOfPattern >= 0)
                 {
                     return i - indexOfPattern;
@@ -52,7 +61,7 @@ namespace Substrings
         /// <param name="text">Text in which the pattern will be searched.</param>
         /// <param name="pattern">Substring to find.</param>
         /// <returns>Index of the beginning of the first substring if found; otherwise, -1</returns>
-        public static int KunthMorrisPratt(string text, string pattern)
+        public static int KunthMorrisPratt(string text, string pattern, bool print = true)
         {
             // Calculate the Longest Proper Prefix which is also a Suffix (LPS) array for the pattern
             int[] lps = CalculateLPSArray(pattern);
@@ -62,7 +71,10 @@ namespace Substrings
 
             while (textIndex < text.Length)
             {
-                Console.WriteLine($"Comparing text[{textIndex}] and pattern[{patternIndex}]");
+                if (print)
+                {
+                    Console.WriteLine($"Comparing text[{textIndex}] and pattern[{patternIndex}]");
+                }
 
                 // If characters match, move both indices forward
                 if (pattern[patternIndex] == text[textIndex])
@@ -81,13 +93,19 @@ namespace Substrings
                 {
                     if (patternIndex != 0)
                     {
-                        Console.WriteLine("Mismatch occurred. Updating pattern index using LPS array.");
+                        if (print)
+                        {
+                            Console.WriteLine("Mismatch occurred. Updating pattern index using LPS array.");
+                        }
                         patternIndex = lps[patternIndex - 1];
                     }
                     // If patternIndex is at the beginning, move to the next character in the text
                     else
                     {
-                        Console.WriteLine("Mismatch occurred. Moving to the next character in the text.");
+                        if (print)
+                        {
+                            Console.WriteLine("Mismatch occurred. Moving to the next character in the text.");
+                        }
                         textIndex++;
                     }
                 }
