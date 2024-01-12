@@ -42,13 +42,18 @@ namespace Substrings
                 int indexOfPattern = chars.Select((letter, index) => new { letter, index })
                     .Where(item => item.letter == text[i] && item.index <= i && i + pattern.Length - item.index <= text.Length).ToList()
                     .FirstOrDefault(item => text.Substring(i - item.index, pattern.Length) == pattern)?.index ?? -1;
-                if (print)
-                {
-                    Console.WriteLine($"Substring comparison at position {i - indexOfPattern}: '{text.Substring(i - indexOfPattern, pattern.Length)}'");
-                }
+                
                 if (indexOfPattern >= 0)
                 {
+                    if (print)
+                    {
+                        Console.WriteLine($"Substring comparison at position {i - indexOfPattern}: '{text.Substring(i - indexOfPattern, pattern.Length)}'");
+                    }
                     return i - indexOfPattern;
+                }
+                else if(print)
+                {
+                    Console.WriteLine("Pattern not found in fragment");
                 }
             }
             return -1;
