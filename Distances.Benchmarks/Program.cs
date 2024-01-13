@@ -14,6 +14,10 @@ public class DistancesBenchmark
     public (string, string) BothSentences { get; set; }
     public static (string, string)[] Sentences => new[] { ("WIDOCZNOSC NA DRODZE DOBRA", "WIDOCZNOSC DOBRA") };
     
+    [ParamsSource((nameof(SubstringsData)))]
+    public (string, string) BothSubstrings { get; set; }
+    public static (string, string)[] SubstringsData => new[] { ("WIDOCZNOSC NA DRODZE DOBRA", "NA DRODZE") };
+    
     [Benchmark]
     public int LevensteinWords() => Functions.Levenstein(BothWords.Item1, BothWords.Item2);
     
@@ -27,16 +31,10 @@ public class DistancesBenchmark
     public int LCSSentences() => Functions.LCS(BothSentences.Item1, BothSentences.Item2);
     
     [Benchmark]
-    public int BoyerMooreWords() => Substrings.Functions.BoyerMoore(BothWords.Item1, BothWords.Item2, false);
+    public int BoyerMooreSubstrings() => Substrings.Functions.BoyerMoore(BothSubstrings.Item1, BothSubstrings.Item2, false);
     
     [Benchmark]
-    public int BoyerMooreSentences() => Substrings.Functions.BoyerMoore(BothSentences.Item1, BothSentences.Item2, false);
-    
-    [Benchmark]
-    public int KunthMorrisPrattWords() => Substrings.Functions.KunthMorrisPratt(BothWords.Item1, BothWords.Item2, false);
-    
-    [Benchmark]
-    public int KunthMorrisPrattSentences() => Substrings.Functions.KunthMorrisPratt(BothSentences.Item1, BothSentences.Item2, false);
+    public int KunthMorrisPrattSubstrings() => Substrings.Functions.KunthMorrisPratt(BothSubstrings.Item1, BothSubstrings.Item2, false);
 }
 
 public static class Program
